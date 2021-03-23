@@ -22,10 +22,12 @@ Constraints:
 1 <= nums.length <= 6
 -10 <= nums[i] <= 10
 All the integers of nums are unique.
-"""
 
+https://leetcode.com/problems/permutations/
+"""
+from typing import List
 class Solution:
-    def permute(self, nums: list[int]) -> list[list[int]]:
+    def permute(self, nums: List[int]) -> List[List[int]]:
         lResult = []
         lPrev = []
         self.backtrack(lResult, lPrev, nums, 0)
