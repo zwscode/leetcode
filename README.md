@@ -1,2 +1,2 @@
 # leetcode
- leetcode problems
+This respository is for archival purpose.
