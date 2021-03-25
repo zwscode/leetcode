@@ -34,6 +34,8 @@ k == lists.length
 -10^4 <= lists[i][j] <= 10^4
 lists[i] is sorted in ascending order.
 The sum of lists[i].length won't exceed 10^4.
+
+https://leetcode.com/problems/merge-k-sorted-lists/
 """
 class ListNode(object):
     def __init__(self, val=0, next=None):

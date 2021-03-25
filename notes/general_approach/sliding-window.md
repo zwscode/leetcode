@@ -26,13 +26,13 @@ def solution(string, char_set):
 
 		# Step 5
 		if curr_right in char_set:
-			letter_map[curr_right] =  letter_map.get(curr_right, 0) + 1
+			letter_map[curr_right] = letter_map.get(curr_right, 0) + 1
 			if letter_map[curr_right] == 1:
 				characters_encountered += 1
 		right += 1
 
 		# Step 6: If you have a new candidate substring (in this case we found all
-		#    our letters, begin incrementing left until it is *invalid*
+		# our letters, begin incrementing left until it is *invalid*
 		if (characters_encountered == len(char_set)):
 			while characters_encountered == len(char_set):
 				curr_left = string[left]
