@@ -1,2 +1,2 @@
 # leetcode
-This respository is for archival purpose.
+record my progresses.

@@ -49,6 +49,7 @@ def longestPalindrome(self, s: str) -> str:
 # https://leetcode.com/problems/longest-palindromic-substring/solutions/2954/python-easy-to-understand-solution-with-comments-from-middle-to-two-ends/
 # time complexity is O(n^2)
 
+# expand from center
 def longestPalindrome(self, s: str) -> str:
 	res = ""
 	for i in xrange(len(s)):
@@ -94,7 +95,31 @@ class Solution:
 		return res
 
 
-#  Manacher's algorithm
+
+
+"""
+Manacher's algorithm
+
+In this implementation, we first modify the input string s by inserting # characters between each character. 
+This allows us to handle both even-length and odd-length palindromes more easily.
+
+We then iterate over the indices of the modified string t, and for each index i, 
+we first check if i is within the right boundary of the current palindrome. 
+If it is, we use the symmetry of palindromes to update the length of the palindrome at index i. 
+
+We then try to expand the palindrome centered at index i by checking if the characters to the left and right of i match. 
+If they do, we increment the length of the palindrome at index i. 
+
+We then update the center and right boundary of the current palindrome if necessary, 
+and update the center and length of the longest palindrome found so far,
+if the palindrome at index i is longer than the previous longest palindrome.
+
+Finally, we extract the longest palindrome substring from the modified input string t 
+by finding the center and length of the longest palindrome, and then mapping those indices back to the original input string s. 
+This algorithm has a time complexity of O(n), where n is the length of the input string s.
+"""
+
+#  Manacher's algorithm, time complexity O(n)
 class Solution:
 	def longestPalindrome(self, s: str) -> str:
 		# modify the input string to insert '#' characters between each character
@@ -130,17 +155,6 @@ class Solution:
 		end = start + max_len
 		return s[start:end]
 	
-"""
-In this implementation, we first modify the input string s by inserting # characters between each character. This allows us to handle both even-length and odd-length palindromes more easily.
-
-We then initialize an array p of zeros to store the lengths of palindromes at each index in the modified string t. We also initialize variables center and right to track the center and right boundary of the current palindrome, and variables max_center and max_len to track the center and length of the longest palindrome found so far.
-
-We then iterate over the indices of the modified string t, and for each index i, we first check if i is within the right boundary of the current palindrome. If it is, we use the symmetry of palindromes to update the length of the palindrome at index i. We then try to expand the palindrome centered at index i by checking if the characters to the left and right of i match. If they do, we increment the length of the palindrome at index i. We then update the center and right boundary of the current palindrome if necessary, and update the center and length of the longest palindrome found so far if the palindrome at index i is longer than the previous longest palindrome.
-
-Finally, we extract the longest palindrome substring from the modified input string t by finding the center and length of the longest palindrome, and then mapping those indices back to the original input string s. This algorithm has a time complexity of O(n), where n is the length of the input string s.
-"""
-
-
 
 """
 similar problem: LeetCode 516. Longest Palindromic Subsequence
