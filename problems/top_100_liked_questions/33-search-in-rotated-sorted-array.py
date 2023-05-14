@@ -41,36 +41,36 @@ https://leetcode.com/problems/search-in-rotated-sorted-array/
 
 from typing import List
 class Solution:
-    def search(self, nums: List[int], target: int) -> int:
-        if not nums:
-            return -1
-        numsLen = len(nums)
-        low, high = 0, numsLen - 1
-        # 1. find smallest
-        while(low < high):
-            mid = int(low + (high - low) / 2)
-            if nums[mid] > nums[high]:
-                low = mid + 1
-            else:
-                high = mid
-        smallest = low
-        if nums[smallest] <= target <= nums[numsLen - 1]:
-            low, high = smallest, numsLen -1
-        else:
-            low ,high = 0, smallest - 1
-        # 2. binary search
-        while(low < high):
-            mid = int(low + (high - low) / 2)
-            if nums[mid] < target:
-                low = mid + 1
-            else:
-                high = mid
-        if nums[low] == target:
-            return low
-        return - 1
+	def search(self, nums: List[int], target: int) -> int:
+		if not nums:
+			return -1
+		numsLen = len(nums)
+		low, high = 0, numsLen - 1
+		# 1. find smallest
+		while(low < high):
+			mid = int(low + (high - low) / 2)
+			if nums[mid] > nums[high]:
+				low = mid + 1
+			else:
+				high = mid
+		smallest = low
+		if nums[smallest] <= target <= nums[numsLen - 1]:
+			low, high = smallest, numsLen -1
+		else:
+			low ,high = 0, smallest - 1
+		# 2. binary search
+		while(low < high):
+			mid = int(low + (high - low) / 2)
+			if nums[mid] < target:
+				low = mid + 1
+			else:
+				high = mid
+		if nums[low] == target:
+			return low
+		return - 1
 
 if __name__ == "__main__":
-    nums = [1,3]
-    target = 1
-    oSolution = Solution()
-    print (oSolution.search(nums, target))
+	nums = [1,3]
+	target = 1
+	oSolution = Solution()
+	print (oSolution.search(nums, target))

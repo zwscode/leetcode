@@ -38,58 +38,58 @@ The sum of lists[i].length won't exceed 10^4.
 https://leetcode.com/problems/merge-k-sorted-lists/
 """
 class ListNode(object):
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+	def __init__(self, val=0, next=None):
+		self.val = val
+		self.next = next
 
 class Solution(object):
 
-    # repeatedly pick the smallest node
-    def mergeKLists(self, lists):
-        """
-        :type lists: List[ListNode]
-        :rtype: ListNode
-        """
-        if not lists:
-            return None
-        oBefore = ListNode()
-        oCur = oBefore
-        
-        while(lists):
-            lDelIdx = []
-            iMinIdx = -1
-            iMin = float("inf")
-            oMin = None
-            for iIdx, oListNode in enumerate(lists):
-                if not oListNode:
-                    lDelIdx.append(iIdx)
-                    continue
-                if oListNode.val < iMin:
-                    iMin = oListNode.val
-                    oMin = oListNode
-                    iMinIdx = iIdx
-            if oMin:
-                oCur.next = oMin
-                lists[iMinIdx] = oMin.next
-            if lDelIdx:
-                for iIdx in reversed(lDelIdx):
-                    del lists[iIdx]
-        return oBefore.next
-    
-    # put all node in a list, sort the list, put nodes in a List
-    def mergeKLists2(self, lists):
-        if not lists:
-            return None
-        lNode = []
-        for oNode in lists:
-            oCur = oNode
-            while(oCur):
-                lNode.append(oCur)
-                oCur = oCur.next
-        lNode.sort(key=lambda x:x.val)
-        oBefore = ListNode()
-        oCur = oBefore
-        for oNode in lNode:
-            oCur.next = oNode
-            oCur = oNode
-        return oBefore.next
+	# repeatedly pick the smallest node
+	def mergeKLists(self, lists):
+		"""
+		:type lists: List[ListNode]
+		:rtype: ListNode
+		"""
+		if not lists:
+			return None
+		oBefore = ListNode()
+		oCur = oBefore
+		
+		while(lists):
+			lDelIdx = []
+			iMinIdx = -1
+			iMin = float("inf")
+			oMin = None
+			for iIdx, oListNode in enumerate(lists):
+				if not oListNode:
+					lDelIdx.append(iIdx)
+					continue
+				if oListNode.val < iMin:
+					iMin = oListNode.val
+					oMin = oListNode
+					iMinIdx = iIdx
+			if oMin:
+				oCur.next = oMin
+				lists[iMinIdx] = oMin.next
+			if lDelIdx:
+				for iIdx in reversed(lDelIdx):
+					del lists[iIdx]
+		return oBefore.next
+	
+	# put all node in a list, sort the list, put nodes in a List
+	def mergeKLists2(self, lists):
+		if not lists:
+			return None
+		lNode = []
+		for oNode in lists:
+			oCur = oNode
+			while(oCur):
+				lNode.append(oCur)
+				oCur = oCur.next
+		lNode.sort(key=lambda x:x.val)
+		oBefore = ListNode()
+		oCur = oBefore
+		for oNode in lNode:
+			oCur.next = oNode
+			oCur = oNode
+		return oBefore.next

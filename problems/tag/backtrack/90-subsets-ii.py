@@ -23,22 +23,22 @@ Constraints:
 https://leetcode.com/problems/subsets-ii/
 """
 class Solution(object):
-    def subsetsWithDup(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
-        lResult = []
-        lPrev = []
-        nums.sort()
-        self.backtrack(lResult, lPrev, nums, 0)
-        return lResult
-    
-    def backtrack(self, lResult, lPrev, lNums, iStart):
-        lResult.append(lPrev[:])
-        for i in range(iStart, len(lNums)):
-            if lNums[i] == lNums[i-1] and i > iStart:
-                continue
-            lPrev.append(lNums[i])
-            self.backtrack(lResult, lPrev, lNums, i + 1)
-            lPrev.pop()
+	def subsetsWithDup(self, nums):
+		"""
+		:type nums: List[int]
+		:rtype: List[List[int]]
+		"""
+		lResult = []
+		lPrev = []
+		nums.sort()
+		self.backtrack(lResult, lPrev, nums, 0)
+		return lResult
+	
+	def backtrack(self, lResult, lPrev, lNums, iStart):
+		lResult.append(lPrev[:])
+		for i in range(iStart, len(lNums)):
+			if lNums[i] == lNums[i-1] and i > iStart:
+				continue
+			lPrev.append(lNums[i])
+			self.backtrack(lResult, lPrev, lNums, i + 1)
+			lPrev.pop()

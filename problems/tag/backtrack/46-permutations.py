@@ -27,18 +27,18 @@ https://leetcode.com/problems/permutations/
 """
 from typing import List
 class Solution:
-    def permute(self, nums: List[int]) -> List[List[int]]:
-        lResult = []
-        lPrev = []
-        self.backtrack(lResult, lPrev, nums, 0)
-        return lResult
-    
-    def backtrack(self, lResult, lPrev, lNums, iStart):
-        if lPrev and len(lPrev) == len(lNums):
-            lResult.append(lPrev[:])
-            return
-        for i in range(0, len(lNums)):
-            if lNums[i] not in lPrev:
-                lPrev.append(lNums[i])
-                self.backtrack(lResult, lPrev, lNums, i + 1)
-                lPrev.pop()
+	def permute(self, nums: List[int]) -> List[List[int]]:
+		lResult = []
+		lPrev = []
+		self.backtrack(lResult, lPrev, nums, 0)
+		return lResult
+	
+	def backtrack(self, lResult, lPrev, lNums, iStart):
+		if lPrev and len(lPrev) == len(lNums):
+			lResult.append(lPrev[:])
+			return
+		for i in range(0, len(lNums)):
+			if lNums[i] not in lPrev:
+				lPrev.append(lNums[i])
+				self.backtrack(lResult, lPrev, lNums, i + 1)
+				lPrev.pop()

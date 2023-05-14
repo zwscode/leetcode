@@ -45,21 +45,21 @@ https://leetcode.com/problems/combination-sum/
 """
 from typing import List
 class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        result = []
-        prev = []
-        candidates.sort()
-        self.backtrack(result, prev, candidates, 0, target)
-        return result
-    
-    def backtrack(self, result, prev, candidates, start, target):
-        if target == 0:
-            result.append(prev[:])
-            return
-        for idx, num in enumerate(candidates):
-            if num > target:
-                break
-            if idx >= start:
-                prev.append(num)
-                self.backtrack(result, prev, candidates, idx, target - num)
-                prev.pop()
+	def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+		result = []
+		prev = []
+		candidates.sort()
+		self.backtrack(result, prev, candidates, 0, target)
+		return result
+	
+	def backtrack(self, result, prev, candidates, start, target):
+		if target == 0:
+			result.append(prev[:])
+			return
+		for idx, num in enumerate(candidates):
+			if num > target:
+				break
+			if idx >= start:
+				prev.append(num)
+				self.backtrack(result, prev, candidates, idx, target - num)
+				prev.pop()

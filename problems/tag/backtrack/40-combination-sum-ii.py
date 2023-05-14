@@ -37,26 +37,26 @@ https://leetcode.com/problems/combination-sum-ii/
 """
 from typing import List
 class Solution:
-    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
-        result = []
-        prev = []
-        candidates.sort()
-        used = [False for i in range(len(candidates))]
-        self.backtrack(result, prev, candidates, used, 0, target)
-        return result
-    
-    def backtrack(self, result, prev, candidates, used, start, target):
-        if target == 0:
-            result.append(prev[:])
-            return
-        for i in range(start, len(candidates)):
-            num = candidates[i]
-            if num > target:
-                break
-            if i > 0 and candidates[i] == candidates[i - 1] and not used[i - 1]:
-                continue
-            used[i] = True
-            prev.append(num)
-            self.backtrack(result, prev, candidates, used, i + 1, target - num)
-            prev.pop()
-            used[i] = False
+	def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+		result = []
+		prev = []
+		candidates.sort()
+		used = [False for i in range(len(candidates))]
+		self.backtrack(result, prev, candidates, used, 0, target)
+		return result
+	
+	def backtrack(self, result, prev, candidates, used, start, target):
+		if target == 0:
+			result.append(prev[:])
+			return
+		for i in range(start, len(candidates)):
+			num = candidates[i]
+			if num > target:
+				break
+			if i > 0 and candidates[i] == candidates[i - 1] and not used[i - 1]:
+				continue
+			used[i] = True
+			prev.append(num)
+			self.backtrack(result, prev, candidates, used, i + 1, target - num)
+			prev.pop()
+			used[i] = False

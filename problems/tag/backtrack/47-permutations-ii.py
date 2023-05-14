@@ -25,24 +25,24 @@ https://leetcode.com/problems/permutations-ii/
 """
 from typing import List
 class Solution:
-    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
-        lUsed = [False for i in range(len(nums))]
-        lResult = []
-        lPrev = []
-        self.backtrack(lResult, lPrev, nums, lUsed)
-        return lResult
+	def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+		lUsed = [False for i in range(len(nums))]
+		lResult = []
+		lPrev = []
+		self.backtrack(lResult, lPrev, nums, lUsed)
+		return lResult
 
-    def backtrack(self, lResult, lPrev, lNums, lUsed):
-        if len(lPrev) == len(lNums):
-            lResult.append(lPrev[:])
-            return
-        
-        for i in range(len(lNums)):
-            if lUsed[i] or (i > 0 and lNums[i] == lNums[i-1] and not lUsed[i - 1]):
-                continue
-            lUsed[i] = True
-            lPrev.append(lNums[i])
-            self.backtrack(lResult, lPrev, lNums, lUsed)
-            lUsed[i] = False
-            lPrev.pop()
+	def backtrack(self, lResult, lPrev, lNums, lUsed):
+		if len(lPrev) == len(lNums):
+			lResult.append(lPrev[:])
+			return
+		
+		for i in range(len(lNums)):
+			if lUsed[i] or (i > 0 and lNums[i] == lNums[i-1] and not lUsed[i - 1]):
+				continue
+			lUsed[i] = True
+			lPrev.append(lNums[i])
+			self.backtrack(lResult, lPrev, lNums, lUsed)
+			lUsed[i] = False
+			lPrev.pop()
 
