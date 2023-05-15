@@ -38,8 +38,8 @@ def isPalindrome(s, l, r):
 	return True
 
 def longestPalindrome(self, s: str) -> str:
-	for i in xrange(len(s)):
-		for j in xrange(i, len(s)):
+	for i in range(len(s)):
+		for j in range(i, len(s)):
 			if (j - i + 1 > len(best)) and isPalindrome(s, i, j):
 				best = s[i:j+1]
 	return best
@@ -52,7 +52,7 @@ def longestPalindrome(self, s: str) -> str:
 # expand from center
 def longestPalindrome(self, s: str) -> str:
 	res = ""
-	for i in xrange(len(s)):
+	for i in range(len(s)):
 		# odd case, like "aba"
 		tmp = self.helper(s, i, i)
 		if len(tmp) > len(res):

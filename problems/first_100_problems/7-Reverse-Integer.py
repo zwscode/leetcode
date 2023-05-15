@@ -18,6 +18,9 @@ Example 3:
 
 Input: x = 120
 Output: 21
+
+
+https://leetcode.com/problems/reverse-integer/
 """
 
 # naive implementation
