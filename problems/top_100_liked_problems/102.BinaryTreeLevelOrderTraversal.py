@@ -27,36 +27,39 @@ The number of nodes in the tree is in the range [0, 2000].
 #         self.left = left
 #         self.right = right
 
-# Idea: level order traversal is a typical BFS problem. One thing to note is that we need to keep track of the length of the current level and the length of the next level.
 
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+from collections import deque
+
+# Idea: level order traversal is a typical BFS problem. One thing to note is that we need to keep track of the length of the current level and the length of the next level.
 class Solution(object):
     def levelOrder(self, root):
         """
         :type root: TreeNode
         :rtype: List[List[int]]
         """
-        from collections import deque
-        # do not forget to check if root is None
-        if not root:
-            return []
         q = deque()
         q.append(root)
-        level_len = 1
-        next_lv_len = 0
-        res = []
+        result = []
         while q:
             level = []
-            next_lv_len = 0
-            for i in range(level_len):
+            qLen = len(q)
+            for i in range(qLen):
                 node = q.popleft()
                 if node:
                     level.append(node.val)
                     if node.left:
                         q.append(node.left)
-                        next_lv_len += 1
                     if node.right:
                         q.append(node.right)
-                        next_lv_len +=1
-            res.append(level)
-            level_len = next_lv_len
-        return res
+            if level:
+                result.append(level)
+        return result
+                
