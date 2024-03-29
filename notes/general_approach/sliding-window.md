@@ -4,6 +4,41 @@ This file is copied from this link below:
 Recommend reading:
 >https://jeremyaguilon.me/blog/visualizing_four_key_interview_algorithms
 
+```cpp
+/* template for sliding window */
+void slidingWindow(string s, string t) {
+	unordered_map<char, int> need, window;
+	for (char c : t) need[c]++;
+
+	int left = 0, right = 0;
+	int valid = 0;
+	while (right < s.size()) {
+		// c is the character to be moved into the window
+		char c = s[right];
+		// move the right side of window
+		right++;
+		// update data inside window
+		...
+
+		/*** debug ***/
+		printf("window: [%d, %d)\n", left, right);
+		/********************/
+
+		// check if left side of window needs to shrink
+		while (window needs shrink) {
+			// d is the character to be moved out of the window
+			char d = s[left];
+			// move the left side of window
+			left++;
+			// update data inside window
+			...
+		}
+	}
+}
+```
+
+
+
 ```python
 '''
 Given a string and a set of characters, return the **smallest** substring that contains all of the characters in the set
